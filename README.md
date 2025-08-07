@@ -1,0 +1,20 @@
+BookVerse API 📖BookVerse is a robust backend API for a book review platform, designed to function similarly to Goodreads. It provides a comprehensive set of features for managing users, books, and reviews, with a secure authentication system. Built with Node.js, Express, and Prisma, it's a scalable and efficient foundation for any book-centric application.Table of ContentsFeaturesTech StackPrerequisitesSetup & InstallationAPI EndpointsAuthenticationContributingLicenseFeatures👤 User Authentication: Secure sign-up, log-in, and log-out functionality using JSON Web Tokens (JWT).📚 Book Management: Operations to add, update, delete, and retrieve books from the database.✍️ Review System: Users can add, update, and delete their reviews for any book.प्रोफाइल User Profile: Fetch a user's profile along with all the reviews they have written.🔒 Protected Routes: Middleware to protect sensitive routes, ensuring only authenticated users can perform certain actions.Tech StackBackend: Node.js, Express.jsORM: Prisma ORMDatabase: PostgreSQLAuthentication: JSON Web Tokens (JWT)Password Hashing: bcrypt.jsValidation: (Optional, e.g., express-validator or zod)PrerequisitesBefore you begin, ensure you have the following installed on your local machine:Node.js (v16 or higher recommended)npm or yarnPostgreSQLGitSetup & InstallationClone the repository:git clone https://github.com/your-username/bookverse.git
+Navigate into the directory:cd bookverse
+Install dependencies:npm install
+Set up the environment variables:Create a .env file in the root of the project and add the following variables.# PostgreSQL connection URL from your database provider
+
+# Format: postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+
+DATABASE_URL="postgresql://postgres:password@localhost:5432/bookverse"
+
+# Secret key for signing JWTs (use a long, random string)
+
+JWT_SECRET="YOUR_SUPER_SECRET_KEY"
+
+# Port for the server to run on
+
+PORT=3000
+Set up the database:Push the Prisma schema to your PostgreSQL database. This will create the necessary tables.npx prisma db push
+Generate the Prisma Client:Generate the Prisma Client based on your schema.npx prisma generate
+Start the server:npm start
+The API should now be running at http://localhost:3000.API EndpointsAll endpoints are prefixed with /api.AuthenticationMethodEndpointDescriptionRequest BodyPOST/auth/signupRegister a new user.{ "email": "user@example.com", "password": "password123", "name": "John Doe" }POST/auth/loginLog in an existing user.{ "email": "user@example.com", "password": "password123" }BooksAuthentication required for POST, PUT, DELETE.MethodEndpointDescriptionGET/booksGet a list of all books.GET/books/:idGet a single book by its ID.POST/booksAdd a new book.PUT/books/:idUpdate an existing book.DELETE/books/:idDelete a book.ReviewsAuthentication required for all review endpoints.MethodEndpointDescriptionRequest BodyGET/books/:bookId/reviewsGet all reviews for a specific book.POST/books/:bookId/reviewsAdd a new review for a book.{ "rating": 5, "comment": "Amazing read!" }PUT/reviews/:reviewIdUpdate a user's own review.{ "rating": 4, "comment": "Still great on second read." }DELETE/reviews/:reviewIdDelete a user's own review.UsersAuthentication required.MethodEndpointDescriptionGET/users/meGet the profile of the currently logged-in user.AuthenticationTo access protected routes, you must include the JWT in the Authorization header of your request.Format: Bearer <token>Example:Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...The token is provided in the response body upon successful user signup or login.ContributingContributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.Fork the repository.Create your feature branch (git checkout -b feature/new-feature).Commit your changes (git commit -am 'Add some feature').Push to the branch (git push origin feature/new-feature).Create a new Pull Request.LicenseThis project is licensed under the MIT License - see the LICENSE.md file for details.
