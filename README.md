@@ -4,14 +4,14 @@ BookVerse is a robust backend API for a book review platform, designed to functi
 
 ## Table of Contents
 
--   [Features](#features)
--   [Tech Stack](#tech-stack)
--   [Prerequisites](#prerequisites)
--   [Setup & Installation](#setup--installation)
--   [API Endpoints](#api-endpoints)
--   [Authentication](#authentication)
--   [Contributing](#contributing)
--   [License](#license)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Prerequisites](#prerequisites)
+- [Setup & Installation](#setup--installation)
+- [API Endpoints](#api-endpoints)
+- [Authentication](#authentication)
+- [Contributing](#contributing)
+- [License](#license)
 
 ---
 
@@ -20,7 +20,7 @@ BookVerse is a robust backend API for a book review platform, designed to functi
 -   👤 **User Authentication:** Secure sign-up, log-in, and log-out functionality using JSON Web Tokens (JWT).
 -   📚 **Book Management:** Operations to add, update, delete, and retrieve books from the database.
 -   ✍️ **Review System:** Users can add, update, and delete their reviews for any book.
--   प्रोफाइल **User Profile:** Fetch a user's profile along with all the reviews they have written.
+-    प्रोफाइल **User Profile:** Fetch a user's profile along with all the reviews they have written.
 -   🔒 **Protected Routes:** Middleware to protect sensitive routes, ensuring only authenticated users can perform certain actions.
 
 ---
@@ -39,7 +39,6 @@ BookVerse is a robust backend API for a book review platform, designed to functi
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your local machine:
-
 -   [Node.js](https://nodejs.org/en/) (v16 or higher recommended)
 -   [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 -   [PostgreSQL](https://www.postgresql.org/download/)
@@ -50,19 +49,16 @@ Before you begin, ensure you have the following installed on your local machine:
 ## Setup & Installation
 
 1.  **Clone the repository:**
-
     ```bash
     git clone [https://github.com/your-username/bookverse.git](https://github.com/your-username/bookverse.git)
     ```
 
 2.  **Navigate into the directory:**
-
     ```bash
     cd bookverse
     ```
 
 3.  **Install dependencies:**
-
     ```bash
     npm install
     ```
@@ -84,14 +80,12 @@ Before you begin, ensure you have the following installed on your local machine:
 
 5.  **Set up the database:**
     Push the Prisma schema to your PostgreSQL database. This will create the necessary tables.
-
     ```bash
     npx prisma db push
     ```
 
 6.  **Generate the Prisma Client:**
     Generate the Prisma Client based on your schema.
-
     ```bash
     npx prisma generate
     ```
@@ -110,41 +104,41 @@ All endpoints are prefixed with `/api`.
 
 ### Authentication
 
-| Method | Endpoint       | Description              | Request Body                                                                     |
-| :----- | :------------- | :----------------------- | :------------------------------------------------------------------------------- |
-| `POST` | `/auth/signup` | Register a new user.     | `{ "email": "user@example.com", "password": "password123", "name": "John Doe" }` |
-| `POST` | `/auth/login`  | Log in an existing user. | `{ "email": "user@example.com", "password": "password123" }`                     |
+| Method | Endpoint | Description | Request Body |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/auth/signup` | Register a new user. | `{ "email": "user@example.com", "password": "password123", "name": "John Doe" }` |
+| `POST` | `/auth/login` | Log in an existing user. | `{ "email": "user@example.com", "password": "password123" }` |
 
 ### Books
 
-_Authentication required for `POST`, `PUT`, `DELETE`._
+*Authentication required for `POST` methods.*
 
-| Method   | Endpoint     | Description                  |
-| :------- | :----------- | :--------------------------- |
-| `GET`    | `/books`     | Get a list of all books.     |
-| `GET`    | `/books/:id` | Get a single book by its ID. |
-| `POST`   | `/books`     | Add a new book.              |
-| `PUT`    | `/books/:id` | Update an existing book.     |
-| `DELETE` | `/books/:id` | Delete a book.               |
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/books` | Get a list of all books. |
+| `GET` | `/books/:id` | Get a single book by its ID. |
+| `POST` | `/books` | Add a new book. |
+| `POST` | `/books/:id` | Delete a book. |
 
 ### Reviews
 
-_Authentication required for all review endpoints._
+*Authentication required for all review endpoints.*
 
-| Method   | Endpoint                 | Description                          | Request Body                                                |
-| :------- | :----------------------- | :----------------------------------- | :---------------------------------------------------------- |
-| `GET`    | `/books/:bookId/reviews` | Get all reviews for a specific book. |                                                             |
-| `POST`   | `/books/:bookId/reviews` | Add a new review for a book.         | `{ "rating": 5, "comment": "Amazing read!" }`               |
-| `PUT`    | `/reviews/:reviewId`     | Update a user's own review.          | `{ "rating": 4, "comment": "Still great on second read." }` |
-| `DELETE` | `/reviews/:reviewId`     | Delete a user's own review.          |                                                             |
+| Method | Endpoint | Description | Request Body |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/books/:bookId/reviews` | Get all reviews for a specific book. | |
+| `POST`| `/books/:bookId/reviews` | Add a new review for a book. | `{ "rating": 5, "comment": "Amazing read!" }` |
+| `GET` | `/reviews/:id` | Get a single review by its ID. | |
+| `PUT` | `/reviews/:id` | Update a user's own review. | `{ "rating": 4, "comment": "Still great on second read." }` |
+| `DELETE`| `/reviews/:id` | Delete a user's own review. | |
 
 ### Users
 
-_Authentication required._
+*Authentication required.*
 
-| Method | Endpoint    | Description                                      |
-| :----- | :---------- | :----------------------------------------------- |
-| `GET`  | `/users/me` | Get the profile of the currently logged-in user. |
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/users/me` | Get the profile of the currently logged-in user. |
 
 ---
 
