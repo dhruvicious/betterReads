@@ -20,7 +20,7 @@ BookVerse is a robust backend API for a book review platform, designed to functi
 -   👤 **User Authentication:** Secure sign-up, log-in, and log-out functionality using JSON Web Tokens (JWT).
 -   📚 **Book Management:** Operations to add, update, delete, and retrieve books from the database.
 -   ✍️ **Review System:** Users can add, update, and delete their reviews for any book.
--    प्रोफाइल **User Profile:** Fetch a user's profile along with all the reviews they have written.
+-   **User Profile:** Fetch a user's profile along with all the reviews they have written.
 -   🔒 **Protected Routes:** Middleware to protect sensitive routes, ensuring only authenticated users can perform certain actions.
 
 ---
