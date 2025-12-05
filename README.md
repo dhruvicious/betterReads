@@ -1,6 +1,6 @@
-# BookVerse API 📖
+# BetterReads API 📖
 
-BookVerse is a robust backend API for a book review platform, designed to function similarly to Goodreads. It provides a comprehensive set of features for managing users, books, and reviews, with a secure authentication system. Built with Node.js, Express, and Prisma, it's a scalable and efficient foundation for any book-centric application.
+BetterReads is a robust backend API for a book review platform, designed to function similarly to Goodreads. It provides a comprehensive set of features for managing users, books, and reviews, with a secure authentication system. Built with Node.js, Express, and Prisma, it's a scalable and efficient foundation for any book-centric application.
 
 ## Table of Contents
 
